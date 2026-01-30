@@ -6,6 +6,10 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { GlowButton } from "@/components/GlowButton";
 import { ArrowRight, BarChart3, Globe, ShieldCheck, Zap } from "lucide-react";
+import { TextReveal } from "@/components/TextReveal";
+import { Hero3D } from "@/components/Hero3D";
+import { ParallaxSection } from "@/components/ParallaxSection";
+import { SpotlightCard } from "@/components/SpotlightCard";
 
 export default function Home() {
   return (
@@ -15,7 +19,8 @@ export default function Home() {
 
         {/* HERO SECTION */}
         <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 container mx-auto px-4 text-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full -z-10" />
+          {/* 3D Background */}
+          <Hero3D />
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -30,17 +35,12 @@ export default function Home() {
             New: Partner Network Live
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 font-heading text-white"
-          >
-            Turn Intent into <br />
+          <div className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 font-heading text-white">
+            <TextReveal delay={0.1}>Turn Intent into</TextReveal>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-              Pipeline
+              <TextReveal delay={0.4}>Pipeline</TextReveal>
             </span>
-          </motion.h1>
+          </div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -72,16 +72,10 @@ export default function Home() {
 
         {/* BENTO GRID FEATURES */}
         <section className="py-24 container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]"
-          >
+          <ParallaxSection className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]" offset={30}>
             {/* Large Card */}
-            <div className="md:col-span-2 row-span-1 rounded-3xl p-8 bg-slate-900/50 border border-slate-800 backdrop-blur-sm relative overflow-hidden group hover:border-blue-500/50 transition-all duration-500">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative z-10 h-full flex flex-col justify-between">
+            <SpotlightCard className="md:col-span-2 row-span-1">
+              <div className="relative z-10 h-full flex flex-col justify-between p-8">
                 <div>
                   <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 text-blue-400">
                     <Globe size={24} />
@@ -96,11 +90,11 @@ export default function Home() {
                   <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-blue-500/10 to-transparent" />
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Tall Card */}
-            <div className="md:col-span-1 row-span-2 rounded-3xl p-8 bg-slate-900/50 border border-slate-800 backdrop-blur-sm relative overflow-hidden group hover:border-green-500/50 transition-all duration-500">
-              <div className="relative z-10 h-full flex flex-col">
+            <SpotlightCard className="md:col-span-1 row-span-2">
+              <div className="relative z-10 h-full flex flex-col p-8">
                 <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-4 text-green-400">
                   <BarChart3 size={24} />
                 </div>
@@ -118,31 +112,31 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Small Card 1 */}
-            <div className="md:col-span-1 row-span-1 rounded-3xl p-8 bg-slate-900/50 border border-slate-800 backdrop-blur-sm relative overflow-hidden group hover:border-purple-500/50 transition-all duration-500">
-              <div className="relative z-10">
+            <SpotlightCard className="md:col-span-1 row-span-1">
+              <div className="relative z-10 p-8">
                 <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4 text-purple-400">
                   <Zap size={24} />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">Real-Time Intent</h3>
                 <p className="text-slate-400 text-sm">Signals delivered in milliseconds.</p>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Small Card 2 */}
-            <div className="md:col-span-1 row-span-1 rounded-3xl p-8 bg-slate-900/50 border border-slate-800 backdrop-blur-sm relative overflow-hidden group hover:border-orange-500/50 transition-all duration-500">
-              <div className="relative z-10">
+            <SpotlightCard className="md:col-span-1 row-span-1">
+              <div className="relative z-10 p-8">
                 <div className="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4 text-orange-400">
                   <ShieldCheck size={24} />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">Verified Contact</h3>
                 <p className="text-slate-400 text-sm">Direct dials and valid emails only.</p>
               </div>
-            </div>
+            </SpotlightCard>
 
-          </motion.div>
+          </ParallaxSection>
         </section>
 
         {/* STATS SECTION */}

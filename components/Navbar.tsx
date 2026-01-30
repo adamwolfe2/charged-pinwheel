@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { GlowButton } from "./GlowButton";
+import { Magnetic } from "./Magnetic";
 import { cn } from "@/lib/utils"; // Assuming shadcn utils exist, or I will create it.
 
 const navLinks = [
@@ -46,14 +47,15 @@ export function Navbar() {
                     {/* Desktop Nav */}
                     <nav className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className="text-sm font-medium text-slate-400 hover:text-white transition-colors relative group"
-                            >
-                                {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full" />
-                            </Link>
+                            <Magnetic key={link.name}>
+                                <Link
+                                    href={link.href}
+                                    className="text-sm font-medium text-slate-400 hover:text-white transition-colors relative group block p-2"
+                                >
+                                    {link.name}
+                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full" />
+                                </Link>
+                            </Magnetic>
                         ))}
                     </nav>
 

@@ -9,9 +9,10 @@
 
 import { ReactNode, useEffect, useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ErrorBoundary } from './error-boundary'
-import { initGlobalErrorHandler } from '@/lib/utils/global-error-handler'
-import { ToastProvider } from '@/lib/contexts/toast-context'
+// import { ErrorBoundary } from './error-boundary'
+// import { initGlobalErrorHandler } from '@/lib/utils/global-error-handler'
+// import { ToastProvider } from '@/lib/contexts/toast-context'
+import { SmoothScroll } from './providers/SmoothScroll'
 
 // Create a client
 function makeQueryClient() {
@@ -59,16 +60,18 @@ export function Providers({ children }: ProvidersProps) {
   const [queryClient] = useState(() => getQueryClient())
 
   // Initialize global error handler
-  useEffect(() => {
-    initGlobalErrorHandler()
-  }, [])
+  // useEffect(() => {
+  //   initGlobalErrorHandler()
+  // }, [])
 
   return (
-    <ErrorBoundary>
-      <QueryClientProvider client={queryClient}>
-        <ToastProvider>{children}</ToastProvider>
-      </QueryClientProvider>
-    </ErrorBoundary>
+    // <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      {/* <ToastProvider> */}
+      <SmoothScroll>{children}</SmoothScroll>
+      {/* </ToastProvider> */}
+    </QueryClientProvider>
+    // </ErrorBoundary>
   )
 }
 
