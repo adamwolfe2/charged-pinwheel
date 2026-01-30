@@ -2,84 +2,106 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    z-index: 50;
-    background: rgba(255, 255, 255, 0.8);
+    right: 0;
+    z-index: 100;
+    padding: 1rem 0;
+}
+
+.blurBackdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(2, 6, 23, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-glass);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: -1;
 }
 
 .nav {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 1.5rem;
+    height: 3rem;
 }
 
 .logo {
     font-family: var(--font-outfit);
-    font-weight: 700;
     font-size: 1.5rem;
-    color: var(--color-primary);
-    text-decoration: none;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
 }
 
 .desktopNav {
-    display: none;
+    display: flex;
     align-items: center;
     gap: 2rem;
 }
 
 .link {
-    color: var(--text-main);
+    color: var(--text-body);
     font-weight: 500;
+    font-size: 0.95rem;
     transition: color 0.2s;
 }
 
 .link:hover {
-    color: var(--color-primary);
+    color: #fff;
+}
+
+.separator {
+    width: 1px;
+    height: 24px;
+    background: var(--glass-border);
 }
 
 .menuToggle {
-    display: block;
+    display: none;
     background: none;
     border: none;
+    color: #fff;
     cursor: pointer;
-    color: var(--text-main);
 }
 
+/* Mobile Menu */
 .mobileMenu {
+    position: fixed;
+    top: 5rem;
+    /* Height of header */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-bg-main);
+    padding: 2rem;
     overflow: hidden;
-    background: white;
-    border-bottom: 1px solid var(--border-subtle);
 }
 
 .mobileLinks {
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
-    gap: 1.5rem;
+    gap: 2rem;
+    align-items: center;
+    padding-top: 2rem;
 }
 
 .mobileLink {
-    font-size: 1.125rem;
-    font-weight: 500;
-    color: var(--text-main);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-heading);
 }
 
-.mobileCta {
-    margin-top: 0.5rem;
-}
-
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .desktopNav {
-        display: flex;
+        display: none;
     }
 
     .menuToggle {
-        display: none;
+        display: block;
     }
 }

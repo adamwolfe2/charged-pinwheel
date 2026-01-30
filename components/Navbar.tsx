@@ -8,9 +8,10 @@ import { GlowButton } from "./GlowButton";
 import styles from "./Navbar.module.css";
 
 const navLinks = [
-    { name: "Features", href: "#features" },
-    { name: "Verticals", href: "#verticals" },
-    { name: "Pricing", href: "#pricing" },
+    { name: "Marketplace", href: "/marketplace-preview" },
+    { name: "Growth Engine", href: "/crm-demo" },
+    { name: "Partner", href: "/partner/demo" },
+    { name: "Resources", href: "/blog" },
 ];
 
 export function Navbar() {
@@ -18,6 +19,7 @@ export function Navbar() {
 
     return (
         <header className={styles.header}>
+            <div className={styles.blurBackdrop} />
             <nav className={styles.nav}>
                 <Link href="/" className={styles.logo}>
                     Cursive
@@ -30,7 +32,11 @@ export function Navbar() {
                             {link.name}
                         </Link>
                     ))}
-                    <GlowButton>Get Started</GlowButton>
+                    <div className={styles.separator} />
+                    <Link href="/compare/homeadvisor" className={styles.link}>
+                        Compare
+                    </Link>
+                    <GlowButton>Get Access</GlowButton>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -45,9 +51,9 @@ export function Navbar() {
                     <motion.div
                         className={styles.mobileMenu}
                         initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
+                        animate={{ height: "100vh", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        transition={{ duration: 0.3 }}
                     >
                         <div className={styles.mobileLinks}>
                             {navLinks.map((link) => (
@@ -61,7 +67,7 @@ export function Navbar() {
                                 </Link>
                             ))}
                             <div className={styles.mobileCta}>
-                                <GlowButton onClick={() => setIsOpen(false)}>Get Started</GlowButton>
+                                <GlowButton onClick={() => setIsOpen(false)}>Get Access</GlowButton>
                             </div>
                         </div>
                     </motion.div>
