@@ -1,0 +1,202 @@
+[
+    {
+        "slug": "new-york",
+        "name": "New York"
+    },
+    {
+        "slug": "los-angeles",
+        "name": "Los Angeles"
+    },
+    {
+        "slug": "chicago",
+        "name": "Chicago"
+    },
+    {
+        "slug": "houston",
+        "name": "Houston"
+    },
+    {
+        "slug": "phoenix",
+        "name": "Phoenix"
+    },
+    {
+        "slug": "philadelphia",
+        "name": "Philadelphia"
+    },
+    {
+        "slug": "san-antonio",
+        "name": "San Antonio"
+    },
+    {
+        "slug": "san-diego",
+        "name": "San Diego"
+    },
+    {
+        "slug": "dallas",
+        "name": "Dallas"
+    },
+    {
+        "slug": "san-jose",
+        "name": "San Jose"
+    },
+    {
+        "slug": "austin",
+        "name": "Austin"
+    },
+    {
+        "slug": "jacksonville",
+        "name": "Jacksonville"
+    },
+    {
+        "slug": "fort-worth",
+        "name": "Fort Worth"
+    },
+    {
+        "slug": "columbus",
+        "name": "Columbus"
+    },
+    {
+        "slug": "indianapolis",
+        "name": "Indianapolis"
+    },
+    {
+        "slug": "charlotte",
+        "name": "Charlotte"
+    },
+    {
+        "slug": "san-francisco",
+        "name": "San Francisco"
+    },
+    {
+        "slug": "seattle",
+        "name": "Seattle"
+    },
+    {
+        "slug": "denver",
+        "name": "Denver"
+    },
+    {
+        "slug": "washington-dc",
+        "name": "Washington D.C."
+    },
+    {
+        "slug": "nashville",
+        "name": "Nashville"
+    },
+    {
+        "slug": "oklahoma-city",
+        "name": "Oklahoma City"
+    },
+    {
+        "slug": "el-paso",
+        "name": "El Paso"
+    },
+    {
+        "slug": "boston",
+        "name": "Boston"
+    },
+    {
+        "slug": "portland",
+        "name": "Portland"
+    },
+    {
+        "slug": "las-vegas",
+        "name": "Las Vegas"
+    },
+    {
+        "slug": "detroit",
+        "name": "Detroit"
+    },
+    {
+        "slug": "memphis",
+        "name": "Memphis"
+    },
+    {
+        "slug": "louisville",
+        "name": "Louisville"
+    },
+    {
+        "slug": "baltimore",
+        "name": "Baltimore"
+    },
+    {
+        "slug": "milwaukee",
+        "name": "Milwaukee"
+    },
+    {
+        "slug": "albuquerque",
+        "name": "Albuquerque"
+    },
+    {
+        "slug": "tucson",
+        "name": "Tucson"
+    },
+    {
+        "slug": "fresno",
+        "name": "Fresno"
+    },
+    {
+        "slug": "sacramento",
+        "name": "Sacramento"
+    },
+    {
+        "slug": "kansas-city",
+        "name": "Kansas City"
+    },
+    {
+        "slug": "mesa",
+        "name": "Mesa"
+    },
+    {
+        "slug": "atlanta",
+        "name": "Atlanta"
+    },
+    {
+        "slug": "omaha",
+        "name": "Omaha"
+    },
+    {
+        "slug": "colorado-springs",
+        "name": "Colorado Springs"
+    },
+    {
+        "slug": "raleigh",
+        "name": "Raleigh"
+    },
+    {
+        "slug": "miami",
+        "name": "Miami"
+    },
+    {
+        "slug": "long-beach",
+        "name": "Long Beach"
+    },
+    {
+        "slug": "virginia-beach",
+        "name": "Virginia Beach"
+    },
+    {
+        "slug": "oakland",
+        "name": "Oakland"
+    },
+    {
+        "slug": "minneapolis",
+        "name": "Minneapolis"
+    },
+    {
+        "slug": "tulsa",
+        "name": "Tulsa"
+    },
+    {
+        "slug": "tampa",
+        "name": "Tampa"
+    },
+    {
+        "slug": "arlington",
+        "name": "Arlington"
+    },
+    {
+        "slug": "new-orleans",
+        "name": "New Orleans"
+    }
+]

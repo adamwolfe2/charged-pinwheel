@@ -1,0 +1,349 @@
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+.progressBar {
+    position: absolute;
+    top: 14px;
+    left: 30px;
+    right: 30px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--color-primary);
+    transition: width 0.5s ease;
+}
+
+.stepItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.stepItem.active {
+    opacity: 1;
+}
+
+.stepCircle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-body);
+    transition: all 0.3s;
+}
+
+.stepItem.active .stepCircle {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+}
+
+.stepLabel {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.card {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stepContent {
+    text-align: center;
+    padding: 2rem;
+}
+
+.stepContent h2 {
+    font-family: var(--font-outfit);
+    font-size: 1.75rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.stepContent p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+/* DROPZONE */
+.dropZone {
+    border: 2px dashed var(--glass-border);
+    border-radius: 1rem;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dropZone:hover {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: var(--color-primary);
+}
+
+.uploadIcon {
+    color: var(--color-primary);
+}
+
+.dropText {
+    font-weight: 500;
+    color: var(--text-heading);
+}
+
+.supported {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* MAPPING */
+.mappingList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mappingRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.csvCol,
+.systemCol {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-body);
+}
+
+.arrow {
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+.mappedIcon {
+    color: #10B981;
+}
+
+/* VERIFICATION */
+.verifyBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.pulseIcon {
+    color: var(--color-primary);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.verifyProgress {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+.barOuter {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.barInner {
+    height: 100%;
+    background: var(--color-primary);
+    transition: width 0.1s linear;
+}
+
+.percent {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.checks {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.checks li {
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checks li::before {
+    content: "•";
+    color: var(--text-muted);
+}
+
+.checks li.checked {
+    color: var(--text-body);
+}
+
+.checks li.checked::before {
+    content: "✓";
+    color: #10B981;
+}
+
+/* PRICING */
+.pricingControl {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.priceDisplay {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    font-family: var(--font-outfit);
+    margin-bottom: 1rem;
+}
+
+.currency {
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    vertical-align: top;
+    margin-right: 0.25rem;
+}
+
+.range {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    accent-color: var(--color-primary);
+}
+
+.earningsProj {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #10B981;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+/* SUCCESS */
+.success .confetti {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.statBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.statBox .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.statBox .val {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+}
+
+.resetBtn {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.resetBtn:hover {
+    border-color: var(--text-body);
+    color: var(--text-body);
+}

@@ -1,0 +1,52 @@
+{
+    "stages": [
+        {
+            "id": "new",
+            "name": "New Leads",
+            "leads": [
+                {
+                    "id": "101",
+                    "company": "TechFlow Inc",
+                    "value": "$12,000",
+                    "task": "Call today"
+                },
+                {
+                    "id": "102",
+                    "company": "Apex Solar",
+                    "value": "$8,500",
+                    "task": "Email sent"
+                }
+            ]
+        },
+        {
+            "id": "contacted",
+            "name": "Contacted",
+            "leads": [
+                {
+                    "id": "103",
+                    "company": "Dr. Smith Ortho",
+                    "value": "$4,200",
+                    "task": "Meeting tom."
+                },
+                {
+                    "id": "104",
+                    "company": "Urban Living",
+                    "value": "$15,000",
+                    "task": "Follow up"
+                }
+            ]
+        },
+        {
+            "id": "negotiation",
+            "name": "Negotiation",
+            "leads": [
+                {
+                    "id": "105",
+                    "company": "Global Logistics",
+                    "value": "$45,000",
+                    "task": "Contract sent"
+                }
+            ]
+        }
+    ]
+}

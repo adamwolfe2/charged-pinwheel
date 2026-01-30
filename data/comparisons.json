@@ -1,0 +1,57 @@
+[
+    {
+        "slug": "homeadvisor",
+        "name": "HomeAdvisor",
+        "shortName": "HA",
+        "cons": [
+            "Shared leads (sold 3-5x)",
+            "Long-term contracts",
+            "Low intent (tire kickers)"
+        ],
+        "savings": "60%"
+    },
+    {
+        "slug": "zoominfo",
+        "name": "ZoomInfo",
+        "shortName": "ZI",
+        "cons": [
+            "Expensive annual contracts",
+            "Stale contact data",
+            "Missing intent signals"
+        ],
+        "savings": "85%"
+    },
+    {
+        "slug": "thumbtack",
+        "name": "Thumbtack",
+        "shortName": "TT",
+        "cons": [
+            "Pay for every message",
+            "Race to the bottom pricing",
+            "Low verification standards"
+        ],
+        "savings": "50%"
+    },
+    {
+        "slug": "google-ads",
+        "name": "Google Ads",
+        "shortName": "Ads",
+        "cons": [
+            "Complex management",
+            "Rising CPC costs",
+            "No guaranteed leads"
+        ],
+        "savings": "70%"
+    },
+    {
+        "slug": "cold-calling",
+        "name": "Cold Calling",
+        "shortName": "Cold",
+        "cons": [
+            "Burnout & turnover",
+            "Extremely low conversion",
+            "Brand damage"
+        ],
+        "savings": "95%"
+    }
+]
