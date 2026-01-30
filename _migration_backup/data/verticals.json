@@ -1,0 +1,146 @@
+[
+  {
+    "slug": "real-estate",
+    "title": "Real Estate",
+    "heroTitle": "AI-Powered Real Estate Leads",
+    "description": "Identify sellers and buyers before they list. Tap into pre-market inventory signals.",
+    "leadMagnet": "Get 15 Sellers in Your Zip Code",
+    "features": [
+      "Pre-listing signals",
+      "Divorce/Probate intent",
+      "FSBO enrichment"
+    ]
+  },
+  {
+    "slug": "healthcare",
+    "title": "Healthcare",
+    "heroTitle": "High-Value Patient Acquisition",
+    "description": "Connect with patients actively searching for specialty treatments and elective procedures.",
+    "leadMagnet": "HIPAA-Compliant Lead Audit",
+    "features": [
+      "Condition-specific intent",
+      "Insurance verification filters",
+      "Local radius targeting"
+    ]
+  },
+  {
+    "slug": "solar",
+    "title": "Solar & Roofing",
+    "heroTitle": "Door-to-Door Intelligence",
+    "description": "Stop knocking blindly. Know exactly which homeowners are researching renovations.",
+    "leadMagnet": "Download Your Territory Heatmap",
+    "features": [
+      "Roof age estimation",
+      "Energy bill scouting",
+      "Competitor quote requests"
+    ]
+  },
+  {
+    "slug": "hvac",
+    "title": "HVAC",
+    "heroTitle": "Emergency & Replacement Leads",
+    "description": "Reach homeowners with failing AC units before they call your competitor.",
+    "leadMagnet": "See 10 Emergency Leads Now",
+    "features": [
+      "System age data",
+      "Permit history",
+      "Emergency search intent"
+    ]
+  },
+  {
+    "slug": "plumbing",
+    "title": "Plumbing",
+    "heroTitle": "High-Ticket Plumbing Jobs",
+    "description": "Target extensive repiping and renovation jobs, not just clogged drains.",
+    "leadMagnet": "Find Renovation Projects",
+    "features": [
+      "Remodel permit alerts",
+      "Water damage search signals",
+      "Commercial intent"
+    ]
+  },
+  {
+    "slug": "legal",
+    "title": "Legal Services",
+    "heroTitle": "Exclusive Legal Retainers",
+    "description": "Connect with claimants searching for representation in PI, Family, and Criminal law.",
+    "leadMagnet": "View Local Case Intent",
+    "features": [
+      "Court record matches",
+      "Incident report cross-refs",
+      "High-intent keyword parsing"
+    ]
+  },
+  {
+    "slug": "insurance",
+    "title": "Insurance",
+    "heroTitle": "Bind More Policies Faster",
+    "description": "Auto, Home, and Life leads that are actively shopping for better rates.",
+    "leadMagnet": "Get 25 Shopper Signals",
+    "features": [
+      "Policy expiration dates",
+      "New mover alerts",
+      "Competitor price check signals"
+    ]
+  },
+  {
+    "slug": "financial-services",
+    "title": "Financial Services",
+    "heroTitle": "Qualified Wealth Prospects",
+    "description": "Find high-net-worth individuals seeking wealth management and financial planning.",
+    "leadMagnet": "Unlock HNW Map",
+    "features": [
+      "Liquidity event signals",
+      "Retirement planning intent",
+      "Investment interest scoring"
+    ]
+  },
+  {
+    "slug": "b2b-saas",
+    "title": "B2B SaaS",
+    "heroTitle": "Shorten Your Sales Cycle",
+    "description": "Identify companies researching software in your category right now.",
+    "leadMagnet": "See Active Buyers",
+    "features": [
+      "Tech stack install data",
+      "Hiring signals",
+      "Review site behavior"
+    ]
+  },
+  {
+    "slug": "logistics",
+    "title": "Transportation & Logistics",
+    "heroTitle": "Fill Your Freight Capacity",
+    "description": "Connect with shippers needing immediate capacity and recurring lanes.",
+    "leadMagnet": "Find Shipping Contracts",
+    "features": [
+      "Volume surge alerts",
+      "New warehouse openings",
+      "Import/Export record matches"
+    ]
+  },
+  {
+    "slug": "education",
+    "title": "Education",
+    "heroTitle": "Enroll More Students",
+    "description": "Reach adult learners and parents actively looking for degree programs and bootcamp.",
+    "leadMagnet": "View Enrollment Intent",
+    "features": [
+      "Career change signals",
+      "Financial aid search intent",
+      "Program specific matches"
+    ]
+  },
+  {
+    "slug": "marketing-agencies",
+    "title": "Agencies",
+    "heroTitle": "Scale Your Agency",
+    "description": "Find businesses explicitly looking for marketing, SEO, and development help.",
+    "leadMagnet": "See Client RFPs",
+    "features": [
+      "Marketing budget signals",
+      "Website technology gaps",
+      "Leadership changes"
+    ]
+  }
+]

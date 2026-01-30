@@ -1,36 +1,78 @@
-import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-});
+import type { Metadata, Viewport } from 'next'
+import { SkipLink } from '@/components/ui/skip-link'
+import { Providers } from '@/components/providers'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Cursive | The Verticalized Buyer-Intent Engine",
-  description: "Cursive is a verticalized buyer-intent engine for service businesses. We plug into your market, find the people already looking for what you sell, and turn that intent into a predictable pipeline.",
-};
+  title: 'Cursive - AI Intent Systems That Never Sleep',
+  description:
+    'Cursive identifies real people actively searching for your service, enriches them with verified contact data, and activates them through automated outbound.',
+  keywords: [
+    'lead generation',
+    'AI intent',
+    'buyer intent',
+    'automated outbound',
+    'lead enrichment',
+    'sales automation',
+    'service industry leads',
+    'HVAC leads',
+    'roofing leads',
+    'plumbing leads',
+  ],
+  authors: [{ name: 'Cursive' }],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
+  openGraph: {
+    type: 'website',
+    url: 'https://meetcursive.com',
+    title: 'Cursive - AI Intent Systems That Never Sleep',
+    description:
+      'Cursive identifies real people actively searching for your service, enriches them with verified contact data, and activates them through automated outbound.',
+    siteName: 'Cursive',
+    images: [
+      {
+        url: '/cursive-logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Cursive - AI Intent Systems',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cursive - AI Intent Systems That Never Sleep',
+    description:
+      'Cursive identifies real people actively searching for your service, enriches them with verified contact data, and activates them through automated outbound.',
+    images: ['/cursive-logo.png'],
+  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#7c3aed',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${outfit.variable} antialiased`}>
-        <div className="app-wrapper">
+      <body className="font-sans antialiased">
+        <SkipLink href="#main-content">Skip to main content</SkipLink>
+        <Providers>
           {children}
-        </div>
+        </Providers>
       </body>
     </html>
-  );
+  )
 }

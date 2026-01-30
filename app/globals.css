@@ -1,106 +1,82 @@
-/* 
-  Global CSS Variables and Reset
-  Theme: Cursive Premium (Deep Navy + Electric Blue + Glass)
-*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  /* Brand Colors - Dark Mode Base */
-  --color-bg-main: #020617;
-  /* Deepest Slate */
-  --color-bg-secondary: #0B1121;
-  --color-primary: #3B82F6;
-  /* Electric Blue */
-  --color-primary-glow: rgba(59, 130, 246, 0.5);
-  --color-accent: #10B981;
-  /* Success Green */
+@layer base {
+  :root {
+    /* Brand Colors - Deep & Electric */
+    --background: 222.2 84% 4.9%;
+    /* #020617 (Slate 950) */
+    --foreground: 210 40% 98%;
+    /* #f8fafc (Slate 50) */
 
-  /* Text */
-  --text-heading: #F8FAFC;
-  /* White-ish */
-  --text-body: #94A3B8;
-  /* Muted Slate */
-  --text-muted: #64748B;
-  /* Darker Slate */
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-  /* Glass Tokens */
-  --glass-bg: rgba(15, 23, 42, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-highlight: rgba(255, 255, 255, 0.05);
-  --backdrop-blur: blur(20px);
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
-  /* Gradients */
-  --gradient-main: linear-gradient(135deg, #0F172A 0%, #020617 100%);
-  --gradient-glow: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15), transparent 70%);
+    --primary: 217.2 91.2% 59.8%;
+    /* #3b82f6 (Blue 500) */
+    --primary-foreground: 222.2 47.4% 11.2%;
 
-  /* Animation */
-  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --secondary: 217.2 32.6% 17.5%;
+    /* #1e293b (Slate 800) */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    /* Cursive Custom Token Mapping */
+    --color-primary: #3B82F6;
+    --color-secondary: #0F172A;
+    --glass-bg: rgba(15, 23, 42, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --font-outfit: var(--font-outfit);
+    --font-inter: var(--font-inter);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    /* ... keep consistent for now as we are force-dark */
+  }
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15), transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.1), transparent 40%);
+    background-attachment: fixed;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+/* Glassmorphism Utilities */
+.glass-panel {
+  @apply bg-slate-950/60 backdrop-blur-xl border border-white/10;
 }
 
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  font-family: var(--font-inter), sans-serif;
-  background-color: var(--color-bg-main);
-  background-image:
-    radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%),
-    radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.05), transparent 25%);
-  color: var(--text-body);
-  -webkit-font-smoothing: antialiased;
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-outfit), sans-serif;
-  color: var(--text-heading);
-  letter-spacing: -0.02em;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-a:hover {
-  color: var(--color-primary);
-}
-
-/* Utilities */
-.container {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-bg-main);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+.text-gradient-primary {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600;
 }

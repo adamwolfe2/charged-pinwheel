@@ -1,28 +1,23 @@
-"use client";
+import { cn } from "@/lib/utils";
 
-import { motion, HTMLMotionProps } from "framer-motion";
-import { clsx } from "clsx";
-import { ReactNode } from "react";
-import styles from "./GlassCard.module.css";
-
-interface GlassCardProps extends HTMLMotionProps<"div"> {
-    children: ReactNode;
+interface GlassCardProps {
+    children: React.ReactNode;
     className?: string;
-    hoverEffect?: boolean;
 }
 
-export function GlassCard({ children, className, hoverEffect = true, ...props }: GlassCardProps) {
+export function GlassCard({ children, className }: GlassCardProps) {
     return (
-        <motion.div
-            className={clsx(styles.card, className)}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            whileHover={hoverEffect ? { y: -5, boxShadow: "var(--shadow-lg)" } : undefined}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            {...props}
-        >
-            {children}
-        </motion.div>
+        <div className={cn(
+            "relative overflow-hidden rounded-2xl border border-white/5 bg-slate-900/40 p-6 backdrop-blur-md transition-all duration-300",
+            "hover:border-blue-500/20 hover:shadow-2xl hover:shadow-blue-500/10",
+            className
+        )}>
+            {/* Inner Glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+
+            <div className="relative z-10">
+                {children}
+            </div>
+        </div>
     );
 }

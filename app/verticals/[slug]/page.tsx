@@ -2,10 +2,8 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { GlowButton } from "@/components/GlowButton";
-import { GlassCard } from "@/components/GlassCard";
-import { InteractiveCalculator } from "@/components/InteractiveCalculator";
-import { ScrollReveal } from "@/components/ScrollReveal";
 import verticalsData from "@/data/verticals.json";
+import { CheckCircle2 } from "lucide-react";
 
 // Type generation for static params
 export function generateStaticParams() {
@@ -32,68 +30,57 @@ export default function VerticalPage({ params }: { params: { slug: string } }) {
     }
 
     return (
-        <>
+        <div className="bg-slate-950 min-h-screen">
             <Navbar />
-            <main style={{ minHeight: "100vh", paddingTop: "8rem", paddingBottom: "4rem" }}>
+            <main className="pt-32 pb-20">
 
                 {/* Dynamic Hero */}
-                <section className="container" style={{ textAlign: "center", marginBottom: "6rem" }}>
-                    <ScrollReveal width="100%">
-                        <span style={{
-                            color: "var(--color-primary)",
-                            fontWeight: 700,
-                            textTransform: "uppercase",
-                            letterSpacing: "0.1em",
-                            marginBottom: "1rem",
-                            display: "block"
-                        }}>
-                            Industry Solutions
-                        </span>
-                        <h1 style={{
-                            fontFamily: "var(--font-outfit)",
-                            fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                            fontWeight: 700,
-                            color: "var(--color-secondary)",
-                            marginBottom: "1.5rem"
-                        }}>
-                            {vertical.heroTitle}
-                        </h1>
-                        <p style={{
-                            maxWidth: "600px",
-                            margin: "0 auto 2rem",
-                            fontSize: "1.25rem",
-                            color: "var(--text-muted)"
-                        }}>
-                            {vertical.description}
-                        </p>
+                <section className="container mx-auto px-4 text-center mb-24 relative">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/10 blur-[100px] rounded-full -z-10" />
+
+                    <span className="text-blue-500 font-bold tracking-widest uppercase text-sm mb-4 block">
+                        Industry Solutions
+                    </span>
+                    <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+                        {vertical.heroTitle}
+                    </h1>
+                    <p className="max-w-2xl mx-auto text-xl text-slate-400 mb-8 leading-relaxed">
+                        {vertical.description}
+                    </p>
+                    <div className="flex justify-center gap-4">
                         <GlowButton>{vertical.leadMagnet}</GlowButton>
-                    </ScrollReveal>
+                    </div>
                 </section>
 
                 {/* Specific Features */}
-                <section className="container" style={{ marginBottom: "6rem" }}>
-                    <h2 style={{ textAlign: "center", fontFamily: "var(--font-outfit)", marginBottom: "3rem", fontSize: "2rem" }}>
-                        Tailored Signals for {vertical.title}
+                <section className="container mx-auto px-4 mb-24">
+                    <h2 className="text-center font-heading text-3xl font-bold text-white mb-12">
+                        Tailored Signals for <span className="text-blue-500">{vertical.title}</span>
                     </h2>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {vertical.features.map((feature, i) => (
-                            <ScrollReveal key={i} delay={i * 0.1}>
-                                <GlassCard>
-                                    <h3 style={{ fontSize: "1.25rem", fontWeight: 600, marginBottom: "0.5rem" }}>{feature}</h3>
-                                    <p style={{ color: "var(--text-muted)" }}>Exclusive data points only available for the {vertical.title} sector.</p>
-                                </GlassCard>
-                            </ScrollReveal>
+                            <div key={i} className="p-8 rounded-2xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm hover:border-blue-500/30 transition-all group">
+                                <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform">
+                                    <CheckCircle2 size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold text-white mb-3">{feature}</h3>
+                                <p className="text-slate-400">Exclusive proprietary data points curated specifically for the {vertical.title} sector.</p>
+                            </div>
                         ))}
                     </div>
                 </section>
 
-                {/* Calculator */}
-                <section className="container">
-                    <InteractiveCalculator />
+                {/* CTA Section */}
+                <section className="container mx-auto px-4 text-center mb-12">
+                    <div className="p-12 rounded-3xl bg-gradient-to-br from-blue-900/20 to-slate-900/50 border border-blue-500/20">
+                        <h2 className="text-3xl font-bold text-white mb-4">Ready to dominate {vertical.title}?</h2>
+                        <p className="text-slate-400 mb-8">Access the Cursive platform and start closing high-intent leads today.</p>
+                        <GlowButton>Get Access Now</GlowButton>
+                    </div>
                 </section>
 
             </main>
             <Footer />
-        </>
+        </div>
     );
 }
