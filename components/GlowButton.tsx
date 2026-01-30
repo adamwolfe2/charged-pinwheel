@@ -2,34 +2,42 @@
 
 import { motion, HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useInteractionSound } from "@/hooks/useInteractionSound";
 
-interface GlowButtonProps extends HTMLMotionProps<"button"> {
-    children: React.ReactNode;
-    variant?: "primary" | "secondary";
-    className?: string;
+interface GlowButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    glowColor?: string;
 }
 
-export function GlowButton({ children, variant = "primary", className, ...props }: GlowButtonProps) {
+export function GlowButton({
+    children,
+    className,
+    glowColor = "#3b82f6", // Default blue
+    ...props
+}: GlowButtonProps) {
+    const { playHover, playClick } = useInteractionSound();
+
     return (
-        <motion.button
+        <button
+            onMouseEnter={() => playHover()}
+            onClick={(e) => {
+                playClick();
+                props.onClick?.(e);
+            }}
             className={cn(
-                "relative group overflow-hidden rounded-xl font-bold transition-all duration-300",
-                "px-8 py-4 text-base tracking-wide",
-                variant === "primary"
-                    ? "bg-blue-600 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:bg-blue-500"
-                    : "bg-slate-800 text-white hover:bg-slate-700",
+                "relative py-3 px-6 rounded-xl font-bold text-white transition-all duration-300 group",
+                "bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-700/50",
+                "hover:shadow-[0_0_40px_-10px_var(--glow-color)] hover:border-white/20 hover:-translate-y-1",
                 className
             )}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            style={
+                {
+                    "--glow-color": glowColor,
+                } as React.CSSProperties
+            }
             {...props}
         >
-            <span className="relative z-10 flex items-center gap-2 justify-center">
-                {children}
-            </span>
-
-            {/* Glow Effect */}
-            <div className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
-        </motion.button>
+            <span className="relative z-10 flex items-center gap-2">{children}</span>
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[length:200%_100%] animate-shimmer" />
+        </button>
     );
 }

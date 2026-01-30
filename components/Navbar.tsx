@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { GlowButton } from "./GlowButton";
 import { Magnetic } from "./Magnetic";
@@ -17,66 +17,75 @@ const navLinks = [
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+    const { scrollY } = useScroll();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    // Transform values for "Dynamic Island" effect
+    const width = useTransform(scrollY, [0, 100], ["100%", "80%"]);
+    const top = useTransform(scrollY, [0, 100], [0, 20]);
+    const borderRadius = useTransform(scrollY, [0, 100], [0, 24]);
+    const backgroundColor = useTransform(
+        scrollY,
+        [0, 100],
+        ["rgba(15, 23, 42, 0)", "rgba(15, 23, 42, 0.8)"]
+    );
+    const borderColor = useTransform(
+        scrollY,
+        [0, 100],
+        ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.1)"]
+    );
+    const backdropBlur = useTransform(scrollY, [0, 100], ["blur(0px)", "blur(12px)"]);
 
     return (
         <>
-            <header
-                className={cn(
-                    "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
-                    scrolled
-                        ? "bg-slate-950/80 backdrop-blur-xl border-white/10 py-3"
-                        : "bg-transparent border-transparent py-5"
-                )}
+            <motion.header
+                style={{
+                    width,
+                    top,
+                    borderRadius,
+                    backgroundColor,
+                    borderColor: borderColor,
+                    backdropFilter: backdropBlur,
+                }}
+                className="fixed left-0 right-0 mx-auto z-50 transition-all duration-300 border border-transparent flex items-center justify-between px-6 py-4"
             >
-                <div className="container mx-auto px-4 flex items-center justify-between">
-                    <Link href="/" className="relative z-50">
-                        <span className="font-heading text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
-                            Cursive
-                        </span>
+                <Link href="/" className="relative z-50">
+                    <span className="font-heading text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+                        Cursive
+                    </span>
+                </Link>
+
+                {/* Desktop Nav */}
+                <nav className="hidden md:flex items-center gap-8">
+                    {navLinks.map((link) => (
+                        <Magnetic key={link.name}>
+                            <Link
+                                href={link.href}
+                                className="text-sm font-medium text-slate-400 hover:text-white transition-colors relative group block p-2"
+                            >
+                                {link.name}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full" />
+                            </Link>
+                        </Magnetic>
+                    ))}
+                </nav>
+
+                <div className="hidden md:flex items-center gap-4">
+                    <Link href="/compare/zoominfo" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+                        Compare
                     </Link>
-
-                    {/* Desktop Nav */}
-                    <nav className="hidden md:flex items-center gap-8">
-                        {navLinks.map((link) => (
-                            <Magnetic key={link.name}>
-                                <Link
-                                    href={link.href}
-                                    className="text-sm font-medium text-slate-400 hover:text-white transition-colors relative group block p-2"
-                                >
-                                    {link.name}
-                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full" />
-                                </Link>
-                            </Magnetic>
-                        ))}
-                    </nav>
-
-                    <div className="hidden md:flex items-center gap-4">
-                        <Link href="/compare/zoominfo" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
-                            Compare
-                        </Link>
-                        <Link href="/marketplace-preview">
-                            <GlowButton className="text-xs px-5 py-2">Get Data</GlowButton>
-                        </Link>
-                    </div>
-
-                    {/* Mobile Toggle */}
-                    <button
-                        className="md:hidden relative z-50 text-white p-2"
-                        onClick={() => setIsOpen(!isOpen)}
-                    >
-                        {isOpen ? <X /> : <Menu />}
-                    </button>
+                    <Link href="/marketplace-preview">
+                        <GlowButton className="text-xs px-5 py-2">Get Data</GlowButton>
+                    </Link>
                 </div>
-            </header>
+
+                {/* Mobile Toggle */}
+                <button
+                    className="md:hidden relative z-50 text-white p-2"
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    {isOpen ? <X /> : <Menu />}
+                </button>
+            </motion.header>
 
             {/* Mobile Menu Overlay */}
             <AnimatePresence>

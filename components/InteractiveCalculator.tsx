@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { DollarSign, Users, Target, ArrowRight } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
+import { Counter } from "@/components/Counter";
+import { ScrambleText } from "@/components/ScrambleText";
+import { BorderBeam } from "@/components/BorderBeam";
 
 export function InteractiveCalculator() {
     const [leadsPerMonth, setLeadsPerMonth] = useState(50);
@@ -26,17 +30,16 @@ export function InteractiveCalculator() {
                         <div className="flex justify-between items-center mb-4">
                             <label className="text-sm font-medium text-slate-300 flex items-center gap-2">
                                 <Users size={16} className="text-blue-500" />
-                                Monthly Leads
+                                <ScrambleText text="Monthly Leads" speed={50} className="font-sans" />
                             </label>
                             <span className="font-mono text-blue-400 bg-blue-500/10 px-3 py-1 rounded-lg border border-blue-500/20">{leadsPerMonth}</span>
                         </div>
-                        <input
-                            type="range"
-                            min="10"
-                            max="500"
-                            value={leadsPerMonth}
-                            onChange={(e) => setLeadsPerMonth(Number(e.target.value))}
-                            className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                        <Slider
+                            min={10}
+                            max={500}
+                            value={[leadsPerMonth]}
+                            onValueChange={(vals) => setLeadsPerMonth(vals[0])}
+                            className="w-full"
                         />
                     </div>
 
@@ -45,17 +48,16 @@ export function InteractiveCalculator() {
                         <div className="flex justify-between items-center mb-4">
                             <label className="text-sm font-medium text-slate-300 flex items-center gap-2">
                                 <Target size={16} className="text-emerald-500" />
-                                Close Rate
+                                <ScrambleText text="Close Rate" speed={50} className="font-sans" />
                             </label>
                             <span className="font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-lg border border-emerald-500/20">{closeRate}%</span>
                         </div>
-                        <input
-                            type="range"
-                            min="5"
-                            max="50"
-                            value={closeRate}
-                            onChange={(e) => setCloseRate(Number(e.target.value))}
-                            className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                        <Slider
+                            min={5}
+                            max={50}
+                            value={[closeRate]}
+                            onValueChange={(vals) => setCloseRate(vals[0])}
+                            className="w-full"
                         />
                     </div>
 
@@ -95,8 +97,9 @@ export function InteractiveCalculator() {
                         >
                             ${projectedRevenue.toLocaleString()}
                         </motion.div>
-                        <button className="w-full bg-white text-blue-900 font-bold py-3 rounded-xl hover:bg-blue-50 transition-colors flex items-center justify-center gap-2">
+                        <button className="relative w-full bg-white text-blue-900 font-bold py-3 rounded-xl hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 overflow-hidden">
                             Start Generating Revenue <ArrowRight size={18} />
+                            <BorderBeam size={100} duration={4} delay={0} borderWidth={2} colorFrom="#3b82f6" colorTo="#06b6d4" />
                         </button>
                     </div>
                 </div>

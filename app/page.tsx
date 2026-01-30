@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from 'next/dynamic';
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
@@ -7,9 +8,15 @@ import { Footer } from "@/components/Footer";
 import { GlowButton } from "@/components/GlowButton";
 import { ArrowRight, BarChart3, Globe, ShieldCheck, Zap } from "lucide-react";
 import { TextReveal } from "@/components/TextReveal";
-import { Hero3D } from "@/components/Hero3D";
-import { ParallaxSection } from "@/components/ParallaxSection";
-import { SpotlightCard } from "@/components/SpotlightCard";
+
+// Dynamic Imports for Performance
+const Hero3D = dynamic(() => import('@/components/Hero3D').then(mod => mod.Hero3D), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-slate-950 -z-10" />
+});
+const StackedCards = dynamic(() => import('@/components/StackedCards').then(mod => mod.StackedCards));
+const FluidBackground = dynamic(() => import('@/components/FluidBackground').then(mod => mod.FluidBackground), { ssr: false });
+const InteractiveCalculator = dynamic(() => import('@/components/InteractiveCalculator').then(mod => mod.InteractiveCalculator), { ssr: false });
 
 export default function Home() {
   return (
@@ -19,8 +26,8 @@ export default function Home() {
 
         {/* HERO SECTION */}
         <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 container mx-auto px-4 text-center">
-          {/* 3D Background */}
-          <Hero3D />
+          <FluidBackground />
+          {/* <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full -z-10" /> */}
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -70,73 +77,41 @@ export default function Home() {
           </motion.div>
         </section>
 
-        {/* BENTO GRID FEATURES */}
-        <section className="py-24 container mx-auto px-4">
-          <ParallaxSection className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]" offset={30}>
-            {/* Large Card */}
-            <SpotlightCard className="md:col-span-2 row-span-1">
-              <div className="relative z-10 h-full flex flex-col justify-between p-8">
-                <div>
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 text-blue-400">
-                    <Globe size={24} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Marketplace Visibility</h3>
-                  <p className="text-slate-400 max-w-md">Browse real-time intent signals from 50+ cities. See exactly who is looking for you.</p>
-                </div>
-                {/* Visual Placeholder */}
-                <div className="w-full h-32 bg-slate-800/50 rounded-lg border border-slate-700/50 relative overflow-hidden">
-                  <div className="absolute top-4 left-4 right-4 h-2 bg-slate-700 rounded-full w-3/4" />
-                  <div className="absolute top-8 left-4 right-4 h-2 bg-slate-700 rounded-full w-1/2" />
-                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-blue-500/10 to-transparent" />
-                </div>
-              </div>
-            </SpotlightCard>
 
-            {/* Tall Card */}
-            <SpotlightCard className="md:col-span-1 row-span-2">
-              <div className="relative z-10 h-full flex flex-col p-8">
-                <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-4 text-green-400">
-                  <BarChart3 size={24} />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Growth Engine</h3>
-                <p className="text-slate-400 mb-8">Built-in CRM to manage your pipeline from lead to close.</p>
-
-                {/* Kanban Visual */}
-                <div className="flex-1 flex gap-3 overflow-hidden opacity-50 group-hover:opacity-100 transition-opacity">
-                  <div className="w-full bg-slate-800/50 rounded-t-lg p-2 space-y-2">
-                    <div className="w-full h-20 bg-slate-700/50 rounded" />
-                    <div className="w-full h-20 bg-slate-700/50 rounded" />
-                  </div>
-                  <div className="w-full bg-slate-800/50 rounded-t-lg p-2 mt-8">
-                    <div className="w-full h-20 bg-slate-700/50 rounded" />
-                  </div>
-                </div>
-              </div>
-            </SpotlightCard>
-
-            {/* Small Card 1 */}
-            <SpotlightCard className="md:col-span-1 row-span-1">
-              <div className="relative z-10 p-8">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4 text-purple-400">
-                  <Zap size={24} />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Real-Time Intent</h3>
-                <p className="text-slate-400 text-sm">Signals delivered in milliseconds.</p>
-              </div>
-            </SpotlightCard>
-
-            {/* Small Card 2 */}
-            <SpotlightCard className="md:col-span-1 row-span-1">
-              <div className="relative z-10 p-8">
-                <div className="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4 text-orange-400">
-                  <ShieldCheck size={24} />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Verified Contact</h3>
-                <p className="text-slate-400 text-sm">Direct dials and valid emails only.</p>
-              </div>
-            </SpotlightCard>
-
-          </ParallaxSection>
+        {/* STACKED CARDS FEATURES */}
+        <section className="bg-slate-950">
+          <div className="container mx-auto px-4 py-24 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold font-heading mb-6 text-white">
+              The Operating System for <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Modern Sales Teams</span>
+            </h2>
+          </div>
+          <StackedCards items={[
+            {
+              title: "Marketplace Visibility",
+              description: "Browse real-time intent signals from 50+ cities. See exactly who is looking for you.",
+              color: "blue",
+              icon: <Globe size={32} />
+            },
+            {
+              title: "Growth Engine",
+              description: "Built-in CRM to manage your pipeline from lead to close. Seamlessly integrated.",
+              color: "green",
+              icon: <BarChart3 size={32} />
+            },
+            {
+              title: "Real-Time Intent",
+              description: "Signals delivered in milliseconds. Beat your competitors to the lead every single time.",
+              color: "purple",
+              icon: <Zap size={32} />
+            },
+            {
+              title: "Verified Contact",
+              description: "Direct dials and valid emails only. No more bouncing emails or dead numbers.",
+              color: "orange",
+              icon: <ShieldCheck size={32} />
+            }
+          ]} />
         </section>
 
         {/* STATS SECTION */}

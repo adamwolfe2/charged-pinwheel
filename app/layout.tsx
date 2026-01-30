@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next'
 import { SkipLink } from '@/components/ui/skip-link'
 import { Providers } from '@/components/providers'
 import { CustomCursor } from '@/components/CustomCursor'
+import { Noise } from '@/components/Noise'
+import { CommandMenu } from '@/components/CommandMenu'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -71,7 +73,9 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <SkipLink href="#main-content">Skip to main content</SkipLink>
         <Providers>
+          <Noise />
           <CustomCursor />
+          <CommandMenu />
           {children}
         </Providers>
       </body>
